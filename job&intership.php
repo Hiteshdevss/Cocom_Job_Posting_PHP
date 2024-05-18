@@ -1,3 +1,4 @@
+<?php require './components/_dbcon.php'?>
 <!doctype html>
 <html>
 <head>
