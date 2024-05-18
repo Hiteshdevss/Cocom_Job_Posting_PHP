@@ -1,3 +1,19 @@
+<?php 
+  require './components/_dbcon.php';
+
+  if($_SERVER["REQUEST_METHOD"] == "POST"){
+  $name= $_POST['name'];
+  $email= $_POST['email'];
+  $message= $_POST['message'];
+
+  $sql = "INSERT INTO `contact_form` (`Name`, `Email`, `Message`) VALUES ('$name', '$email', '$message')";
+  $result = mysqli_query($conn, $sql);
+  if($result){
+    header("Location: thankyou.php");
+  }
+  }
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -17,7 +33,8 @@
 
     <section class="text-gray-600 body-font">
   <div class="container px-5 py-5 mx-auto top-0">
-    <div class="lg:w-1/2 md:w-2/3 mx-auto">
+  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <div class="lg:w-1/2 md:w-2/3 mx-auto">    
       <div class="flex flex-wrap -m-2">
         <div class="p-2 w-1/2">
           <div class="static">
@@ -38,14 +55,16 @@
           </div>
         </div>
         <div class="p-2 w-full">
-          <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit Query</button>
+          <button type="submit" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit Query</button>
         </div>
-       
       </div>
     </div>
+    </form>
   </div>
 </section>
+    
 <script src="//code.tidio.co/iiifjimfg5spwyx0ujxk9euq63ylit2n.js" async></script>
-    <?php require './components/_footer.php'?>
+<?php require './components/_footer.php'?>
+
 </body>
 </html>
