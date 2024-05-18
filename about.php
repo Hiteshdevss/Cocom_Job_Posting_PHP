@@ -1,3 +1,4 @@
+<?php require './components/_dbcon.php'?>
 <!doctype html>
 <html>
 <head>
@@ -88,4 +89,3 @@
     <?php require './components/_footer.php'?>
 </body>
 </html>
-        
